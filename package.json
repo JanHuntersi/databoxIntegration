@@ -1,0 +1,19 @@
+{
+  "name": "expressnodejs",
+  "version": "1.0.0",
+  "description": "\"# nodeProject\" \r First  website hosted with node and express",
+  "main": "Simple nodejs + Express web app with some Api's",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanHuntersi/nodeProject.git"
+  },
+  "author": "Jan Sernec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JanHuntersi/nodeProject/issues"
+  },
+  "homepage": "https://github.com/JanHuntersi/nodeProject#readme"
+}
