@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodejs and Express</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    $(document).ready(function(){
+        function start(){
+            console.log("is running")
+            $('#coinbaseFetchButton').html('Stop');            
+        }
+        function stop(){
+            console.log("stopped running")
+            $('#coinbaseFetchButton').html('Start');
+        }
+        var isRunning=false;
+        $('#coinbaseFetchButton').click(function(){
+            $( '#coinbaseFetchButton' ).toggleClass( "stop" );
+                isRunning ? stop():start() ;      
+                isRunning= !isRunning;
+        });
+
+    });
+    
+</script>    
+<body>
+    <header class="flexMiddle">
+        <h1>DataBox Integration</h1>
+    </header>
+    <div class="main">
+        <h2>Click the button to push Crypto data to DataBox</h2>
+<button class="mainButton" id="coinbaseFetchButton"> Start</button>
+
+</div>
+    <footer class="flexMiddle">
+        <h2>Made by <a href="https://github.com/JanHuntersi">Jan Sernec</a></h2>
+    </footer>
+</body>
+</html>
