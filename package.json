@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JanHuntersi/nodeProject/issues"
   },
-  "homepage": "https://github.com/JanHuntersi/nodeProject#readme"
+  "homepage": "https://github.com/JanHuntersi/nodeProject#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
