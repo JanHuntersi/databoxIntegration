@@ -1,7 +1,13 @@
-body{margin: 0 !important;
-padding: 0!important;
+*{margin: 0 ;
+padding: 0;
 }
+* {
+    box-sizing: border-box;
+  }
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+h2{text-align: center;}
 
 .flexMiddle{
     display: flex;
@@ -11,7 +17,11 @@ padding: 0!important;
     justify-content: center;
   
 }
-header,footer, .mainButton{
+h2{
+    padding: 30px;
+    color: #1d9ad6;
+}
+header,footer, .mainButton, h2{
     font-family: 'Poppins', sans-serif;
 }
 footer{
@@ -39,7 +49,7 @@ header{
     text-align: center;
     margin-left: 50%;
     color:white;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 0%);
     font-size: 1.3em;
     border-radius: 15px;
     font-weight: bold;
