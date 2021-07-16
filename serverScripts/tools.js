@@ -9,7 +9,6 @@ module.exports.handleErrors = (response) => {
     return response;
 }
 
-
 //Function returns Date&Time in correct TimeFormat
 module.exports.getDateTime = () => {
     var today = new Date();
@@ -18,5 +17,3 @@ module.exports.getDateTime = () => {
     var dateTime = date + ' ' + time;
     return dateTime;
 }
-
-

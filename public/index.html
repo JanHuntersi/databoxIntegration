@@ -10,19 +10,31 @@
 </head>
 <script>
     $(document).ready(function(){
+        var isRunning=false;  //Default is stopped
+    //Start 
         function start(){
             console.log("is running")
-            $('#coinbaseFetchButton').html('Stop');            
+            $('#coinbaseFetchButton').html('Stop');      
+                   
         }
+    //Stops    
         function stop(){
             console.log("stopped running")
             $('#coinbaseFetchButton').html('Start');
         }
-        var isRunning=false;
+        
         $('#coinbaseFetchButton').click(function(){
             $( '#coinbaseFetchButton' ).toggleClass( "stop" );
                 isRunning ? stop():start() ;      
                 isRunning= !isRunning;
+
+                isRunning ? value='start':value='stop' ;      
+                //send request to start trigger or end trigger
+                fetch( `http://localhost:3000/${value}`)
+                .then(function (response){
+                    return response.json();
+                })
+                .then(json => console.log(json))
         });
 
     });
