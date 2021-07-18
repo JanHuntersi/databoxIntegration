@@ -9,7 +9,7 @@ const fetch = require('node-fetch'); //Library used for fetching data
 
 module.exports.fetchCoinMarketCap = () => {
     console.log("CoinMarketCap");
-    var cryptos = ['BTC', 'ETH', 'USDT', 'BNB', 'ADA']
+    var cryptos = ['BTC', 'ETH', 'USDT']
     fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?' + new URLSearchParams({ //ES6 approach
             symbol: cryptos
         }), {
@@ -23,14 +23,18 @@ module.exports.fetchCoinMarketCap = () => {
         .then(tools.handleErrors)
         .then(response => response.json())
         .then(function (data) {
-            for (let i = 0; i < 5; i++) {
+//Inserting data in to databox
+            for (let i = 0; i < 3; i++) {
                 cryptoSymbol = cryptos[i];
-                // console.log("market cap: " + data.data[cryptoSymbol].quote.USD.market_cap+", name: "+data.data[cryptoSymbol].name+", key: "+"ranked_cryptos"); 
-                insertFunct.insert(data.data[cryptoSymbol].quote.USD.market_cap, data.data[cryptoSymbol].name, "ranked_cryptos")
+                //console.log('Time je' + tools.getDateTime())
+                console.log((i+1)+". funkcija"); 
+            insertFunct.insertWithTime(data.data[cryptoSymbol].quote.USD.market_cap, data.data[cryptoSymbol].name, tools.getDateTime(), "ranked_cryptos")
+            
             }
         })
-        .catch(error => console.log(error));
-
+        .catch(
+            error => console.log(error)
+            );
 }
 
 module.exports.fetchCoinBase = () => {

@@ -9,6 +9,11 @@ const scheduleTrigger = require('node-schedule'); //for scheduling tasks   //htt
 
 var fetchFunct = require('./serverScripts/fetchFunctions')
 
+//Functions  that create new files
+//to be written read, deleted
+
+var files = require('./serverScripts/crud')
+
 
 app.listen(3000,function(){
     console.log('Server Started On Port 3000')
@@ -40,8 +45,27 @@ app.get('/stop', function (req,res) {
     //stoping the periodic sending trigger
     scheduleTrigger.cancelJob('triggerFetchCMC');
     console.log('Trigger has been canceled!')
-
+        /////////////////fetch and save to files
   })
 
 
+//Saving files locally
+
+
+app.get('/test',function(){
+    fetchFunct.fetchCoinMarketCap();
+})
+
+app.get('/createNew',function(){
+    files.createNew(); //
+    console.log("test)")
+})
+
+/* //testing purposes 
+app.get('/pushRecord',function(){
+    files.updateFile(); // Pushes a new record
+})
+*/
+
+//Loads public/index.html
 app.use(express.static('public'));

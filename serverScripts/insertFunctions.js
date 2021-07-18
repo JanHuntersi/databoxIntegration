@@ -1,4 +1,5 @@
 const Databox = require('databox'); //DataBox Api
+var files = require('./crud')
 
 //Databox auth
 var client = new Databox({
@@ -6,9 +7,9 @@ var client = new Databox({
 });
 
 //Metric fot ETH is going to show values through out the day
-module.exports.insertWithTime = (data, name, date,key) => {
-    console.log("Klican je bil insertWithTime!");
-    console.log("Data:" + data + ", name je :" + name + " time: ");
+module.exports.insertWithTime = (data, name, date, key) => {
+  
+    console.log("Insert with time, name: " + name );
     client.push({
         key: key,
         value: data,
@@ -17,7 +18,24 @@ module.exports.insertWithTime = (data, name, date,key) => {
             'crypto': name
         }
     }, function (response) {
+        var sendingSucces;
+        if (response.status == 'OK') {
+            sendingSucces = 'Yes'
+        } else {
+            sendingSucces = 'No'
+            //Show error //TODO
+        }
+        console.log("odgovor")
         console.log(response)
+        var objSentData = {
+            Succes: sendingSucces,
+            TimeOfSending: date,
+            MetricsSend: 1,
+            Service:'crypto'+name,
+            pushID:response.id
+        }
+        console.log(objSentData);
+        files.updateFile(objSentData);
     });
 }
 
@@ -27,18 +45,29 @@ module.exports.insert = (data, name, key) => {
     console.log("Klican je bil insert");
     console.log("Data:" + data + ", name je :" + name);
     client.push({
-        key: key,   //metrics key
+        key: key, //metrics key
         value: data,
         attributes: {
             'crypto': name
         }
     }, function (response) {
+        var sendingSucces;
+        if (response.status == 'OK') {
+            sendingSucces = 'Yes'
+        } else {
+            //Show error //TODO
+        }
         console.log(response)
+        var objSentData = {
+            Succes: sendingSucces,
+            TimeOfSending: 'unknown',
+            MetricsSend: 1,
+            Service:'crypto '+name,
+            pushID:response.id
+        }
+        console.log(objSentData)
+        files.updateFile(objSentData);
     });
 }
 
 //ADD CRUD
-
-
-
-

@@ -20,6 +20,7 @@
     "databox": "^2.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "fs.promises": "^0.1.2",
     "node-fetch": "^2.6.1",
     "node-schedule": "^2.0.0",
     "url": "^0.11.0"
