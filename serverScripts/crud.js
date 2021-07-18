@@ -3,6 +3,11 @@ const fsPromises = require('fs').promises;
 const fs = require('fs');
 
 
+module.exports.getReadFile= async function (){
+    var data = await fsPromises.readFile('sentData.json','utf8')
+    .catch((err) => console.error('Failed to read file', err));
+    return JSON.parse(data);
+}
 
 //Creates a new file with empty array //deletes all previous records
 module.exports.createNew= () => {

@@ -4,6 +4,8 @@ const app = express();
 const scheduleTrigger = require('node-schedule'); //for scheduling tasks   //https://www.npmjs.com/package/node-schedule
 
 
+
+
 //Functions that will fetch data and with the help of insertFunctions
 // push them in to databox api
 
@@ -20,6 +22,16 @@ app.listen(3000,function(){
     //db.fetchCoinMarketCap();
 }) 
 
+app.get('/getsentdata',function(req,res){
+
+    let obj=files.getReadFile();
+    obj.then(function(response){
+    res.json({
+        response
+      }) 
+    })
+})
+
 //On /start periodic trigger will start
 app.get('/start', function (req, res) {
     res.json({
@@ -32,7 +44,7 @@ app.get('/start', function (req, res) {
 
         //call fetch functions
         fetchFunct.fetchCoinMarketCap();
-
+        fetchFunct.fetchCoinBase();
     })
 })
 
