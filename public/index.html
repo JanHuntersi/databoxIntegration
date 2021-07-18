@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,48 +10,71 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <script>
-    $(document).ready(function(){
-        var isRunning=false;  //Default is stopped
-    //Start 
-        function start(){
-            console.log("is running")
-            $('#coinbaseFetchButton').html('Stop');      
-                   
+    $(document).ready(function () {
+        var isRunning = false; //Default is stopped
+        //Start 
+        function start() {
+            // console.log("is running")
+            $('#coinbaseFetchButton').html('Stop');
+           
         }
-    //Stops    
-        function stop(){
-            console.log("stopped running")
+        //Stops    
+        function stop() {
+            //console.log("stopped running")
             $('#coinbaseFetchButton').html('Start');
         }
-        
-        $('#coinbaseFetchButton').click(function(){
-            $( '#coinbaseFetchButton' ).toggleClass( "stop" );
-                isRunning ? stop():start() ;      
-                isRunning= !isRunning;
 
-                isRunning ? value='start':value='stop' ;      
-                //send request to start trigger or end trigger
-                fetch( `http://localhost:3000/${value}`)
-                .then(function (response){
+        $('#coinbaseFetchButton').click(function () {
+            $('#animationSpan').toggleClass('loaderActive');
+            $('#coinbaseFetchButton').toggleClass("stop");
+            isRunning ? stop() : start();
+            isRunning = !isRunning;     //
+
+            isRunning ? value = 'start' : value = 'stop';
+            //send request to start trigger or end trigger
+            fetch(`http://localhost:3000/${value}`)
+                .then(function (response) {
                     return response.json();
                 })
                 .then(json => console.log(json))
         });
 
     });
-    
-</script>    
+</script>
+
+
 <body>
     <header class="flexMiddle">
         <h1>DataBox Integration</h1>
     </header>
     <div class="main">
         <h2>Click the button to push Crypto data to DataBox</h2>
-<button class="mainButton" id="coinbaseFetchButton"> Start</button>
+        
+        <!--  Add loading animation-->
+     <div id="animationSpan" class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+        
+        <button class="mainButton" id="coinbaseFetchButton"> Start</button>
+     
+        <div id="output"></div>
+        <script src="ejs.min.js"></script>
+        <script>
+          let people = ['geddy', 'neil', 'alex'],
+              html = ejs.render('<%= people.join(", "); %>', {people: people});
+          // With jQuery:
+          $('#output').html(html);
+          // Vanilla JS:
+          document.getElementById('output').innerHTML = html;
+        </script>
 
-</div>
+    </div>
     <footer class="flexMiddle">
         <h2>Made by <a href="https://github.com/JanHuntersi">Jan Sernec</a></h2>
     </footer>
 </body>
+
 </html>

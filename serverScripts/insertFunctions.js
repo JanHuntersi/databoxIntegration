@@ -36,3 +36,9 @@ module.exports.insert = (data, name, key) => {
         console.log(response)
     });
 }
+
+//ADD CRUD
+
+
+
+

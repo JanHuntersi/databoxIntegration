@@ -66,6 +66,7 @@ header{
 .main{
     height: 75vh;
     width: 100%;
+    
 }
 
 
@@ -73,3 +74,50 @@ header{
     --blueHeader: #1d9ad6;
     --blackFooter: #162231;
 }
+
+
+/* CSS for animated bouncing loader. */
+.loader {
+    display: hidden;
+    justify-content: center;
+      align-items: center;
+      height: 10vh;
+  }
+  .loaderActive{
+      display: flex !important;
+  }
+  /* Loader circles */
+  .loader > span {
+    background: var(--blueHeader);
+    border-radius: 50%;
+    margin: 5rem 0.5rem;
+    animation: bouncingLoader 0.6s infinite alternate;
+  }
+  
+  .loader > span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  
+  .loader > span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .loader > span:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+  
+  /* Define the animation called bouncingLoader. */
+  @keyframes bouncingLoader {
+    from {
+      width: 0.3rem;
+      height: 0.3rem;
+      
+      transform: translate3d(0);
+    }
+    to {
+      width: 1rem;
+      height: 1rem;
+      
+      transform: translate3d(0, -1.4rem, 0);
+    }
+  }

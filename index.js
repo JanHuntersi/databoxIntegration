@@ -1,9 +1,14 @@
 const express = require('express')
 const app = express();
+
 const scheduleTrigger = require('node-schedule'); //for scheduling tasks   //https://www.npmjs.com/package/node-schedule
 
-var db = require("./serverScripts/fetchFunctions.js");
-//const fun = tools.test();
+
+//Functions that will fetch data and with the help of insertFunctions
+// push them in to databox api
+
+var fetchFunct = require('./serverScripts/fetchFunctions')
+
 
 app.listen(3000,function(){
     console.log('Server Started On Port 3000')
@@ -17,9 +22,12 @@ app.get('/start', function (req, res) {
         message: 'Trigger has just been started!'
     })
     //starting the periodic sending trigger
-    scheduleTrigger.scheduleJob('triggerFetchCMC','*/2 * * * * *', () =>{
+    scheduleTrigger.scheduleJob('triggerFetchCMC','*/30 * * * * *', () =>{
         console.log('trigger is running...');
+
         //call fetch functions
+        fetchFunct.fetchCoinMarketCap();
+
     })
 })
 
