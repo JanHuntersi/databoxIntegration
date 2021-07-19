@@ -19,7 +19,7 @@ Users can stop the trigger by clicking  the button again.</p>
 
   
   <h2>Running the project</h2>
-  <p>Clone the project, run <code>node index.js</code>  in the terminal to start  and open browser to <code>http://localhost:3000/</code></p>
+  <p>Clone the project <code>$ git clone https://github.com/JanHuntersi/databoxIntegration.git</code>, run <code>node index.js</code>  in the terminal to start  and open browser to <code>http://localhost:3000/</code></p>
   
   <h2>Screenshots</h2>
 
