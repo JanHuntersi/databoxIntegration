@@ -43,6 +43,7 @@ app.get('/start', function (req, res) {
         //call fetch functions
         fetchFunct.fetchCoinMarketCap();
         fetchFunct.fetchCoinBase();
+        console.log("Fetched  data!")
     })
 })
 

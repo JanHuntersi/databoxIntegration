@@ -21,7 +21,7 @@ h2{
     padding: 30px;
     color: #1d9ad6;
 }
-header,footer, .mainButton, h2{
+header,footer, .mainButton, h2, th, td{
     font-family: 'Poppins', sans-serif;
 }
 footer{
@@ -42,7 +42,7 @@ header{
     font-size: 1.5em;
 }
 .mainButton{
-    padding: 0px;
+    margin: 10px;
     width: 240px;
     height: 45px;
     position: relative;
@@ -70,11 +70,24 @@ header{
     
 }
 
+#tableShow{
+ margin-top: 10vh;
+ margin-bottom: 5vh;
+  width: 80%;
+  margin-left: 10%;
+  display: none;
+}
+td,th{text-align: center;}
+th{font-size: 1.6em; color: var(--blackFooter);}
+td{font-size: 1.2em;color: var(--blueHeader); font-weight: bold;}
+
 
 :root{
     --blueHeader: #1d9ad6;
     --blackFooter: #162231;
 }
+
+
 
 
 /* CSS for animated bouncing loader. */
