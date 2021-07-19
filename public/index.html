@@ -48,6 +48,7 @@
 <body>
     <header class="flexMiddle">
         <h1>DataBox Integration</h1>
+        
     </header>
     <div class="main">
         <h2 id="buttonInfo">Click the button to push Crypto data to DataBox every 30 seconds</h2>
@@ -64,7 +65,7 @@
         <div id="output"></div>
         <button class="mainButton" id="showSendDataButton"> Show services</button>
         <script src="ejs.min.js"></script>
-        <script src="ejs.min.js">
+        <script>
  $('#showSendDataButton').click(function () {
           
             fetch(`http://localhost:3000/getsentdata`)
@@ -75,7 +76,7 @@
                 .then(function(res){
                        var a =res.response.dataRecords;
                         console.log(a);
-                        html=ejs.render()
+                        
 
                 })
         });

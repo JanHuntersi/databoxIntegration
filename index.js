@@ -4,8 +4,6 @@ const app = express();
 const scheduleTrigger = require('node-schedule'); //for scheduling tasks   //https://www.npmjs.com/package/node-schedule
 
 
-
-
 //Functions that will fetch data and with the help of insertFunctions
 // push them in to databox api
 
