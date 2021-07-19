@@ -2,7 +2,7 @@
 const fsPromises = require('fs').promises;
 const fs = require('fs');
 
-
+//Function reads file and returns data
 module.exports.getReadFile= async function (){
     var data = await fsPromises.readFile('sentData.json','utf8')
     .catch((err) => console.error('Failed to read file', err));
@@ -24,16 +24,9 @@ module.exports.createNew= () => {
 
 //Append new JSON data to existing file
 
-module.exports.  
-
-
-
-updateFile = async function (newData)  {
-        
-        var data = await fsPromises.readFile('sentData.json','utf8')
-                           .catch((err) => console.error('Failed to read file', err));
-      
-                          
+module.exports.updateFile = async function (newData)  {
+         var data = await fsPromises.readFile('sentData.json','utf8')
+         .catch((err) => console.error('Failed to read file', err));                  
 try{
         fs.writeFileSync('sentData.json',get(data,newData),'utf8')
         console.log("zapisal!")
@@ -46,6 +39,5 @@ try{
 function get(data,newData){
     data = JSON.parse(data);
     data.dataRecords.push(newData) ;
-   // console.log("prebral");
     return JSON.stringify(data);
 }

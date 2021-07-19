@@ -1,4 +1,3 @@
-
 var tools = require("./tools"); //Usefull functions
 var insertFunct = require("./insertFunctions")
 const {
@@ -20,25 +19,23 @@ module.exports.fetchCoinMarketCap = () => {
                 'Content-Type': 'application/json'
             }
         })
-        .then(tools.handleErrors)
+        .then(tools.handleErrors) //function for handling errors
         .then(response => response.json())
         .then(function (data) {
-//Inserting data in to databox
+            //Inserting data in to databox
             for (let i = 0; i < 3; i++) {
                 cryptoSymbol = cryptos[i];
-                //console.log('Time je' + tools.getDateTime())
-                console.log((i+1)+". funkcija"); 
-            insertFunct.insertWithTime(data.data[cryptoSymbol].quote.USD.market_cap, data.data[cryptoSymbol].name, tools.getDateTime(), "ranked_cryptos")
-            
+                console.log((i + 1) + ". funkcija");
+                insertFunct.insertWithTime(data.data[cryptoSymbol].quote.USD.market_cap, data.data[cryptoSymbol].name, tools.getDateTime(), "ranked_cryptos")
             }
         })
         .catch(
             error => console.log(error)
-            );
+        );
 }
 
 module.exports.fetchCoinBase = () => {
-//fetch ETH    
+    //fetch ETH    
     fetch('https://api.coinbase.com/v2/prices/ETH-EUR/buy')
         .then(tools.handleErrors)
         .then(response => response.json())
@@ -47,7 +44,7 @@ module.exports.fetchCoinBase = () => {
             insertFunct.insertWithTime(data.data.amount, 'ETH', tools.getDateTime(), "crypto_prices");
         })
         .catch(error => console.log(error));
-//fetch BTC
+    //fetch BTC
     fetch('https://api.coinbase.com/v2/prices/BTC-EUR/buy')
         .then(tools.handleErrors)
         .then(response => response.json())
@@ -55,7 +52,7 @@ module.exports.fetchCoinBase = () => {
             insertFunct.insert(data.data.amount, "BTC", "crypto_prices");
         })
         .catch(error => console.log(error));
-//fetch DOGE
+    //fetch DOGE
     fetch('https://api.coinbase.com/v2/prices/DOGE-EUR/buy')
         .then(tools.handleErrors)
         .then(response => response.json())
@@ -64,13 +61,3 @@ module.exports.fetchCoinBase = () => {
         })
         .catch(error => console.log(error));
 }
-
-
-
-
-
-
-
-
-
-/* Api with Auth 2.0 ?? */

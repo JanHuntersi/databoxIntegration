@@ -8,7 +8,6 @@ var client = new Databox({
 
 //Metric fot ETH is going to show values through out the day
 module.exports.insertWithTime = (data, name, date, key) => {
-  
     console.log("Insert with time, name: " + name );
     client.push({
         key: key,
@@ -23,7 +22,6 @@ module.exports.insertWithTime = (data, name, date, key) => {
             sendingSucces = 'Yes'
         } else {
             sendingSucces = 'No'
-            //Show error //TODO
         }
         console.log("odgovor")
         console.log(response)
@@ -55,7 +53,7 @@ module.exports.insert = (data, name, key) => {
         if (response.status == 'OK') {
             sendingSucces = 'Yes'
         } else {
-            //Show error //TODO
+            sendingSucces = 'No'
         }
         console.log(response)
         var objSentData = {
@@ -69,5 +67,3 @@ module.exports.insert = (data, name, key) => {
         files.updateFile(objSentData);
     });
 }
-
-//ADD CRUD

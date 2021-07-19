@@ -1,27 +1,25 @@
 const express = require('express')
 const app = express();
-
+app.use(express.static('public'));
 const scheduleTrigger = require('node-schedule'); //for scheduling tasks   //https://www.npmjs.com/package/node-schedule
 
 
 //Functions that will fetch data and with the help of insertFunctions
 // push them in to databox api
-
 var fetchFunct = require('./serverScripts/fetchFunctions')
+
 
 //Functions  that create new files
 //to be written read, deleted
-
 var files = require('./serverScripts/crud')
 
 
 app.listen(3000,function(){
     console.log('Server Started On Port 3000')
-    //db.fetchCoinMarketCap();
 }) 
 
+//sends info about sent data
 app.get('/getsentdata',function(req,res){
-
     let obj=files.getReadFile();
     obj.then(function(response){
     res.json({
@@ -37,9 +35,7 @@ app.get('/start', function (req, res) {
         message: 'Trigger has just been started!'
     })
     //starting the periodic sending trigger
-    scheduleTrigger.scheduleJob('triggerFetchCMC','*/30 * * * * *', () =>{
-        console.log('trigger is running...');
-
+    scheduleTrigger.scheduleJob('triggerFetchCMC','*/30 * * * * *', () =>{ //every 30seconds sent
         //call fetch functions
         fetchFunct.fetchCoinMarketCap();
         fetchFunct.fetchCoinBase();
@@ -56,27 +52,12 @@ app.get('/stop', function (req,res) {
     //stoping the periodic sending trigger
     scheduleTrigger.cancelJob('triggerFetchCMC');
     console.log('Trigger has been canceled!')
-        /////////////////fetch and save to files
   })
 
 
-//Saving files locally
-
-
-app.get('/test',function(){
-    fetchFunct.fetchCoinMarketCap();
-})
-
+//deletes file content
 app.get('/createNew',function(){
     files.createNew(); //
     console.log("test)")
 })
 
-/* //testing purposes 
-app.get('/pushRecord',function(){
-    files.updateFile(); // Pushes a new record
-})
-*/
-
-//Loads public/index.html
-app.use(express.static('public'));
