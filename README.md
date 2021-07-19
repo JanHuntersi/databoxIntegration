@@ -16,10 +16,10 @@ Users can stop the trigger by clicking  the button again.</p>
   <li><b>NodeJS</b> and <b>Express</b> -> handling requests, fetching data and serving webpages</li>
   <li><b>HTML/CSS</b> -> styling webpages </li>
   </ul>
-  </br>
+
   
   <h2>Running the project</h2>
-  <p>To run the project first</p>
+  <p>Clone the project, run <code>node index.js</code>  in the terminal to start  and open browser to <code>http://localhost:3000/</code></p>
   
   <h2>Screenshots</h2>
 
